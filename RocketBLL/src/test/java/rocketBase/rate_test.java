@@ -8,11 +8,20 @@ import exceptions.RateException;
 
 public class rate_test {
 
-	//TODO - RocketBLL rate_test
-	//		Check to see if a known credit score returns a known interest rate
 	
-	//TODO - RocketBLL rate_test
-	//		Check to see if a RateException is thrown if there are no rates for a given
-	//		credit score
+	@Test
+	public void Interest_rate_test() throws RateException {
+		assertEquals(RateBLL.getRate(605), 7, 0.01);
+		assertEquals(RateBLL.getRate(655), 6.5, 0.01);
+		assertEquals(RateBLL.getRate(730), 6, 0.01);
+		assertEquals(RateBLL.getRate(775), 5.75, 0.01);
+		assertEquals(RateBLL.getRate(805), 5.5, 0.01);
+	}
+	
+	
+	@Test (expected = RateException.class)
+	public void Interest_rate_test2() throws RateException {
+		RateBLL.getRate(500);
+	}
 
 }
